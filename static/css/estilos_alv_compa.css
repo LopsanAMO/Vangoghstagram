@@ -1,0 +1,27 @@
+.contento {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contento2 {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.container_pro{
+    width: 67.3%;
+}
+
+.probando_font{
+    font-family: insta_font;
+}
+
+.materialboxed{
+    display: initial !important;
+}
+
+@font-face {
+    font-family: insta_font;
+    src: url('http://localhost:8000/static/css/Billabong.woff');
+}
