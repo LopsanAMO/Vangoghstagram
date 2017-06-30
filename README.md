@@ -1,5 +1,4 @@
 # Vangoghstagram
-=======
 
 Instalación
 ===========
