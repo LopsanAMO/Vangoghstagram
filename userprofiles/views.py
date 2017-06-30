@@ -4,6 +4,7 @@ from django.views.generic import View
 from django.contrib.auth import logout
 from instagram.client import InstagramAPI
 from social_django.models import UserSocialAuth
+from .models import Vangouser
 
 client_secret = settings.SOCIAL_AUTH_INSTAGRAM_SECRET
 
@@ -15,7 +16,7 @@ def logout_view(request):
 
 class Home(View):
     def get(self, request):
-        template_name = 'home.html'
+        template_name = 'base.html'
         img = []
         try:
             user = UserSocialAuth.objects.get(user=request.user)
@@ -25,7 +26,6 @@ class Home(View):
             recent_media, next_ = api.user_recent_media(user_id=uuid, count=10)
             for media in recent_media:
                img.append(media.images['standard_resolution'].url)
-            # media = InstagramFeed.get_media(user_name=user_name, count=8)
         except Exception:
             pass
         ctx = {
