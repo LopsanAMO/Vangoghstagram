@@ -12,9 +12,6 @@ env:
 install:
     - pip install -r requerimientos.txt
 
-script:
-  - sh build_forum.sh
-
 after_success:
 - pip freeze
 
