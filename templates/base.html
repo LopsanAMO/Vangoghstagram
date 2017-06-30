@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title></title>
+        <link rel="stylesheet" href="{% static '/css/estilos_alv_compa.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <body>
+        <div class="row">
+
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col s12 m4 l2">
+
+                </div>
+                <!-- col s12 m8 offset-m2 l6 offset-l3 -->
+                <div class="col s10 m7 offset-m2 l6 offset-l1">
+                    <div class="card-panel lighten-5 z-depth-0">
+                      <div class="row valign-wrapper">
+                        <div class="col s4">
+                          <img src="{{request.user.vangouser.profile_picture}}" alt="" class="circle thumbnail responsive-img"> <!-- notice the "circle" class -->
+                        </div>
+                        <div class="col s6">
+                          <span class="black-text">
+                            <h5 class="flow-text letras">{{request.user.vangouser.username}}</h5>
+                          </span>
+                          <p class="letras">{{request.user.get_full_name}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col s2 m5 offset-m8 l2">
+                      <a  class='dropdown-button' data-beloworigin="true" href='#' data-activates='dropdown1'>
+                          <i class="material-icons letras" style="font-size:45px; color: black">list</i>
+                      </a>
+                      <div class="switch row">
+                        <label>
+                          Light
+                          <input id="chicho" type="checkbox">
+                          <span class="lever"></span>
+                          Dark
+                        </label>
+                      </div>
+                      <ul id='dropdown1' class='dropdown-content'>
+                          <li><a href="/logout">Cerrar sesion</a></li>
+                      </ul>
+                  </div>
+            </div>
+
+            <div class="row container_pro">
+                {% for img in imgs %}
+                    <div class="col">
+                        <img src="{{img}}" class="materialboxed responsive-img thumbnail" width="300" height="300">
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% else %}
+            <p class="probando_font">Vangoghstagram</p>
+            <a class="probando_font" href="{% url 'social:begin' 'instagram' %}?next=/">Login with GitHub</a>
+        {% endif %}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="{% static '/js/main.js' %}"></script>
+    </body>
+</html>
